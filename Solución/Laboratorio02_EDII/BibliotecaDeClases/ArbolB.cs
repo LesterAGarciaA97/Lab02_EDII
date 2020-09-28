@@ -14,6 +14,10 @@ namespace BibliotecaDeClases
             return File.Exists(Environment.CurrentDirectory + "\\arbol.txt");
         }
 
+        public static string OrderArbol(int order) {
+            string Data = "Data Almacenado";
+            return Data;
+        }
         #region MANEJO METADATA
         static int[] ManejarMeta(int[] meta = null)
         {
@@ -113,7 +117,7 @@ namespace BibliotecaDeClases
                 TieneCarry = false;
             }
 
-            if (Actual.Valores.Count == Actual.cantV + 1)
+            if (Actual.Valores.Count == Actual.cantV)
             {
                 if (Actual.Hijos.Count == 0 && Actual.Padre != 0)
                 {

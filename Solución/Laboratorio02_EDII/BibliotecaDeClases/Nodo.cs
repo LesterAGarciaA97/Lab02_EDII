@@ -11,7 +11,7 @@ namespace BibliotecaDeClases
         {
             if (padre == 0)
             {
-                cantV = (4 * (DatosArboles.Instance.Grado - 1)) / 3;
+                cantV = DatosArboles.Instance.Grado - 1;
             }
             else
             {
@@ -35,8 +35,8 @@ namespace BibliotecaDeClases
        
         public static Nodo<T> StringToNodo(int posicion)
         {
-            var cantHijos = ((4 * (DatosArboles.Instance.Grado - 1)) / 3) + 1;
-            var cantCaracteres = 10 + (5 * cantHijos) + (509 * (cantHijos - 1));
+            var cantHijos = DatosArboles.Instance.Grado;
+            var cantCaracteres = 10 + (5 * cantHijos) + (611 * (cantHijos - 1));
             //Lee la linea de archivo de texto que contiene el nodo
             var buffer = new byte[cantCaracteres];
             using (var fs = new FileStream(path, FileMode.OpenOrCreate))
@@ -74,7 +74,7 @@ namespace BibliotecaDeClases
             string hijos = string.Empty;
             string datos = string.Empty;
 
-            var cantHijos = ((4 * (DatosArboles.Instance.Grado - 1)) / 3) + 1;
+            var cantHijos = DatosArboles.Instance.Grado;
 
             foreach (var item in Hijos)
             {
@@ -92,12 +92,12 @@ namespace BibliotecaDeClases
 
             for (int i = Valores.Count; i < (cantHijos - 1); i++)
             {
-                datos = $"{datos}|{string.Format("{0,-508}", "-")}";
+                datos = $"{datos}|{string.Format("{0,-610}", "-")}";
             }
 
             var NodoChar = ($"{indice.ToString("0000;-0000")}|{Padre.ToString("0000;-0000")}{hijos}{datos}|").ToCharArray();
             var p1 = NodoChar.Length;
-            var cantCaracteres = 10 + (5 * cantHijos) + (509 * (cantHijos - 1));
+            var cantCaracteres = 10 + (5 * cantHijos) + (611 * (cantHijos - 1));
 
             using (var fs = new FileStream(path, FileMode.OpenOrCreate))
             {

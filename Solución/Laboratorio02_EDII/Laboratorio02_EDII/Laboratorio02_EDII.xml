@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Laboratorio02_EDII</name>
+    </assembly>
+    <members>
+        <member name="M:Laboratorio02_EDII.Controllers.apiController.Get(System.String)">
+            <summary>
+            Metodo para devolver recorrido
+            </summary>
+            <param name="traversal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Laboratorio02_EDII.Controllers.apiController.dat">
+            <summary>
+            Prueba de que funciona correctamente la API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Laboratorio02_EDII.Controllers.apiController.Post(System.Int32)">
+            <summary>
+            Metodo para agregar el orden 
+            </summary>
+            <param name="order"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Laboratorio02_EDII.Controllers.apiController.Delete">
+            <summary>
+            Metodo para eliminar el arbol por completo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Laboratorio02_EDII.Controllers.apiController.Add(Laboratorio02_EDII.Models.Movie[])">
+            <summary>
+            Metodo para agregar todos los valores del arbol a traves de un JSON
+            </summary>
+            <param name="NMovie"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

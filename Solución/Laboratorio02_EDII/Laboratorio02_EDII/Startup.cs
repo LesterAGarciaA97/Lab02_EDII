@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace Laboratorio02_EDII
 {
@@ -26,7 +29,16 @@ namespace Laboratorio02_EDII
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lab02_EDII", Version = "v1", });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "Laboratorio02_EDII.xml");
+                c.IncludeXmlComments(filePath);
+            });
+
+           
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,6 +47,12 @@ namespace Laboratorio02_EDII
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+ 
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lab02_ED2");
+            });
 
             app.UseHttpsRedirection();
 

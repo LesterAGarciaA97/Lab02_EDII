@@ -18,6 +18,11 @@ namespace Laboratorio02_EDII.Controllers
     [ApiController]
     public class apiController : ControllerBase
     {
+        /// <summary>
+        /// Metodo para devolver recorrido
+        /// </summary>
+        /// <param name="traversal"></param>
+        /// <returns></returns>
         [HttpGet("traversal")]
         public List<Movie> Get(string traversal)
         {
@@ -31,23 +36,39 @@ namespace Laboratorio02_EDII.Controllers
             var StP = new StringToMovie(Movie.StringToMovie);
             return ArbolB<Movie>.Recorrido(null);
         }
+        /// <summary>
+        /// Prueba de que funciona correctamente la API
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult dat() {
             return Ok();
         }
 
+        /// <summary>
+        /// Metodo para agregar el orden 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         [HttpPost]
         public string Post([FromBody] int order) {
             return ArbolB<Movie>.OrderArbol(order);
         }
-
+        /// <summary>
+        /// Metodo para eliminar el arbol por completo
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete]
         public string Delete() {
             var path = Path.Combine(Environment.CurrentDirectory, "arbol.txt");
             System.IO.File.Delete(path);
             return "Archivo de Arbol Eliminado";
         }
-
+        /// <summary>
+        /// Metodo para agregar todos los valores del arbol a traves de un JSON
+        /// </summary>
+        /// <param name="NMovie"></param>
+        /// <returns></returns>
         [HttpPost("populate")]
         public ActionResult Add([FromBody] Movie[] NMovie) {
             try
